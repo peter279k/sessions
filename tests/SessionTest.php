@@ -3,7 +3,7 @@
 namespace duncan3dc\SessionsTest;
 
 use duncan3dc\Sessions\Session;
-use duncan3dc\Sessions\SessionInstance;
+use duncan3dc\Sessions\SessionInterface;
 use Mockery;
 
 class SessionTest extends \PHPUnit_Framework_TestCase
@@ -14,7 +14,7 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     {
         Session::name("test");
 
-        $this->session = Mockery::mock(SessionInstance::class);
+        $this->session = Mockery::mock(SessionInterface::class);
 
         $reflection = new \ReflectionClass(Session::class);
         $session = $reflection->getProperty("session");
@@ -137,9 +137,10 @@ class SessionTest extends \PHPUnit_Framework_TestCase
 
     public function testCreateNamespace()
     {
-        $this->session->shouldReceive("createNamespace")->once()->with("extra")->andReturn("ok");
+        $namespace = Mockery::mock(SessionInterface::class);
+        $this->session->shouldReceive("createNamespace")->once()->with("extra")->andReturn($namespace);
         $result = Session::createNamespace("extra");
-        $this->assertSame("ok", $result);
+        $this->assertSame($namespace, $result);
     }
 
 

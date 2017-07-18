@@ -42,7 +42,7 @@ class SessionInstance implements SessionInterface
      * @param CookieInterface $cookie The cookie settings to use
      * @param string $id The session ID to use
      */
-    public function __construct($name, CookieInterface $cookie = null, $id = "")
+    public function __construct(string $name, CookieInterface $cookie = null, string $id = "")
     {
         if (strlen($name) < 1) {
             throw new \InvalidArgumentException("Cannot start session, no name has been specified");
@@ -107,7 +107,7 @@ class SessionInstance implements SessionInterface
      *
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         $this->init();
 
@@ -120,9 +120,9 @@ class SessionInstance implements SessionInterface
      *
      * @param string $name The namespace of the session
      *
-     * @return SessionNamespace
+     * @return SessionInterface
      */
-    public function createNamespace($name)
+    public function createNamespace(string $name): SessionInterface
     {
         return new SessionNamespace($name, $this);
     }
@@ -135,7 +135,7 @@ class SessionInstance implements SessionInterface
      *
      * @return mixed
      */
-    public function get($key)
+    public function get(string $key)
     {
         $this->init();
 
@@ -152,7 +152,7 @@ class SessionInstance implements SessionInterface
      *
      * @return array
      */
-    public function getAll()
+    public function getAll(): array
     {
         $this->init();
 
@@ -166,9 +166,9 @@ class SessionInstance implements SessionInterface
      * @param string|array $data Either the name of the session key to update, or an array of keys to update
      * @param mixed $value If $data is a string then store this value in the session data
      *
-     * @return static
+     * @return SessionInterface
      */
-    public function set($data, $value = null)
+    public function set($data, $value = null): SessionInterface
     {
         $this->init();
 
@@ -218,9 +218,9 @@ class SessionInstance implements SessionInterface
     /**
      * Tear down the session and wipe all its data.
      *
-     * @return static
+     * @return SessionInterface
      */
-    public function destroy()
+    public function destroy(): SessionInterface
     {
         $this->init();
 

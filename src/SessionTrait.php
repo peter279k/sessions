@@ -23,7 +23,7 @@ trait SessionTrait
      *
      * @return mixed
      */
-    public function getSet($key, $default = null, $strict = false)
+    public function getSet(string $key, $default = null, bool $strict = false)
     {
         # If this key was just submitted via post then store it in the session data
         if (isset($_POST[$key])) {
@@ -63,9 +63,9 @@ trait SessionTrait
      *
      * @param string|array $data Either the name of the session key to update, or an array of keys to update
      *
-     * @return static
+     * @return SessionInterface
      */
-    public function delete(...$keys)
+    public function delete(string ...$keys): SessionInterface
     {
         # Convert the array of keys to key/value pairs
         $keyValues = [];
@@ -80,9 +80,9 @@ trait SessionTrait
     /**
      * Clear all previously set values.
      *
-     * @return static
+     * @return SessionInterface
      */
-    public function clear()
+    public function clear(): SessionInterface
     {
         # Get all the current session data
         $values = $this->getAll();
@@ -106,7 +106,7 @@ trait SessionTrait
      *
      * @return string
      */
-    protected function flashKey($key)
+    protected function flashKey(string $key): string
     {
         return "_fs_{$key}";
     }
@@ -119,7 +119,7 @@ trait SessionTrait
      *
      * @return mixed
      */
-    public function getFlash($key)
+    public function getFlash(string $key)
     {
         $key = $this->flashKey($key);
 
@@ -137,9 +137,9 @@ trait SessionTrait
      * @param string $key The name of the flash value to update
      * @param mixed $value The value to store against the key
      *
-     * @return static
+     * @return SessionInterface
      */
-    public function setFlash($key, $value)
+    public function setFlash(string $key, $value): SessionInterface
     {
         $key = $this->flashKey($key);
 
