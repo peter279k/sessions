@@ -3,8 +3,9 @@
 namespace duncan3dc\SessionsTest;
 
 use duncan3dc\Sessions\Cookie;
+use PHPUnit\Framework\TestCase;
 
-class CookieTest extends \PHPUnit_Framework_TestCase
+class CookieTest extends TestCase
 {
 
     public function testGetLifetime()

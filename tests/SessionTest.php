@@ -5,8 +5,9 @@ namespace duncan3dc\SessionsTest;
 use duncan3dc\Sessions\Session;
 use duncan3dc\Sessions\SessionInterface;
 use Mockery;
+use PHPUnit\Framework\TestCase;
 
-class SessionTest extends \PHPUnit_Framework_TestCase
+class SessionTest extends TestCase
 {
     private $session;
 
@@ -39,7 +40,8 @@ class SessionTest extends \PHPUnit_Framework_TestCase
     public function testSetString()
     {
         $this->session->shouldReceive("set")->once()->with("one", "1");
-        Session::set("one", "1");
+        $result = Session::set("one", "1");
+        $this->assertNull($result);
     }
 
 

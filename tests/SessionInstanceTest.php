@@ -3,8 +3,9 @@
 namespace duncan3dc\SessionsTest;
 
 use duncan3dc\Sessions\SessionInstance;
+use PHPUnit\Framework\TestCase;
 
-class SessionInstanceTest extends \PHPUnit_Framework_TestCase
+class SessionInstanceTest extends TestCase
 {
     private $session;
 
@@ -17,7 +18,8 @@ class SessionInstanceTest extends \PHPUnit_Framework_TestCase
 
     public function testConstructor()
     {
-        $this->setExpectedException(\InvalidArgumentException::class, "Cannot start session, no name has been specified");
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage("Cannot start session, no name has been specified");
         new SessionInstance("");
     }
 

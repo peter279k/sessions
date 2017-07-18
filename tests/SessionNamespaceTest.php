@@ -5,8 +5,9 @@ namespace duncan3dc\SessionsTest;
 use duncan3dc\Sessions\SessionInterface;
 use duncan3dc\Sessions\SessionNamespace;
 use Mockery;
+use PHPUnit\Framework\TestCase;
 
-class SessionNamespaceTest extends \PHPUnit_Framework_TestCase
+class SessionNamespaceTest extends TestCase
 {
     private $session;
     private $namespace;

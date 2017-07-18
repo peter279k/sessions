@@ -6,8 +6,9 @@ use duncan3dc\ObjectIntruder\Intruder;
 use duncan3dc\Sessions\SessionInstance;
 use GuzzleHttp\Client;
 use GuzzleHttp\Cookie\FileCookieJar;
+use PHPUnit\Framework\TestCase;
 
-class WebTest extends \PHPUnit_Framework_TestCase
+class WebTest extends TestCase
 {
     private $cookies;
     private $client;
