@@ -8,8 +8,8 @@ use Mockery;
 
 class SessionNamespaceTest extends \PHPUnit_Framework_TestCase
 {
-    protected $session;
-    protected $namespace;
+    private $session;
+    private $namespace;
 
     public function setUp()
     {

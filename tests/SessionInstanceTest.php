@@ -6,7 +6,7 @@ use duncan3dc\Sessions\SessionInstance;
 
 class SessionInstanceTest extends \PHPUnit_Framework_TestCase
 {
-    protected $session;
+    private $session;
 
     public function setUp()
     {
